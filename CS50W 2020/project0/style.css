@@ -1,0 +1,96 @@
+body {
+  /* font-family: 'EB Garamond', serif; */
+  margin-bottom: initial;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 120px;
+  /* Margin bottom by footer height */
+}
+
+.container {
+  background-color: aqua;
+}
+
+nav {
+  border: 5px solid;
+}
+
+.footer {
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #eee;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+a, a:visited, a:active, a:focus {
+  color: #000;
+  background-color: transparent;
+  -webkit-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #8a8a8a;
+}
+
+table {
+  position: relative;
+  border: 2px solid black;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  position: relative;
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  position: relative;
+  /* font-weight: normal;
+    border-top: thin dotted #ccc; */
+  background-color: lightgray;
+}
+
+@media (min-width: 800px) {
+  .container > h1::before {
+    content: "Welcome to My Web Page!  ";
+  }
+}
+
+@media (max-width: 799px) {
+  .container > h1::before {
+    content: "Welcome!";
+  }
+}
+
+.stage-earth {
+  background-color: #FFA726;
+}
+
+.stage-mercury {
+  background-color: #9CCC65;
+}
+
+.stage-venus {
+  background-color: #FF8A65;
+}
+
+.stage-mars {
+  background-color: #B3E5FC;
+}
+
+.stage-jupiter {
+  background-color: #81D4FA;
+}
+
+.stage-saturn {
+  background-color: #26C6DA;
+}
+/*# sourceMappingURL=style.css.map */

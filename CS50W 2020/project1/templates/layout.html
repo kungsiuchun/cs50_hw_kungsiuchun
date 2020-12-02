@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Website!</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <nav class= "navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url_for('index') }}">CS50 Book Review</a>
+        
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="makeA">
+                        <li class="searchPadding">
+                            <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}" method="POST" class="search_form">
+                                <select name="type" class="input-select">
+                                    <option value="">All</option>
+                                    <option value="isbn">Isbn</option>
+                                    <option value="title">Title</option>
+                                    <option value="author">Author</option>
+                                </select>
+                                <input class="form-control mr-sm-2" class="input" placeholder="Search.... " type="text" name="query"
+                                    class="search_input" placeholder="Search...">
+                                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+                            </form>
+                        </li>
+
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <a class="btn btn-outline-warning" href="{{ url_for('dashboard') }}">Dashboard
+                                <span class="sr-only">(current)</span></a>
+
+                            <a class="btn btn-outline-warning" href="{{ url_for('logout') }}">Logout
+                                    <span class="sr-only">(current)</span></a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a class="btn btn-outline-warning" href="{{ url_for('register') }}">Register
+                                <span class="sr-only">(current)</span></a>
+
+                                <a class="btn btn-outline-warning" href="{{ url_for('login') }}">Login
+                                    <span class="sr-only">(current)</span></a>
+                        </li>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>{% block heading %}{% endblock %}</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        <div class="container">
+
+            {% block body %}
+            {% endblock %}
+            
+          
+
+        </div>
+        
+    </body>
+</html>

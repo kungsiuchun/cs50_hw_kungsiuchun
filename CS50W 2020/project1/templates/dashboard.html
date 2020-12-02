@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Dashboard page
+{% endblock %}
+
+{% block body %}
+
+
+
+{% if name %}
+<h1 class="card-title" style="color: black"><span style="font-size: 100%; ">Welcome,  {{ name }}!</span>
+</h1>
+{% else %}
+<h1 class="card-title" style="color: black"><span style="font-size: 100%; ">Welcome!</span>
+</h1>
+{% endif %}
+
+
+
+<div class="container mt-auto" style="height: auto;">
+    <div class="p-2 mb-auto">
+        <h1>Review from you:</h1>
+    
+        <div class = "row mt-auto ">
+            {% for review in reviews %}
+            <div class = "col-md-auto mt-3">
+                <div class ="card" style="height: 250px; width: 250px;">
+                        <h3>{{ review.content }}</h5>
+                        <h3>{{ review.star }}</h5>
+                        <h3>{{ review.date_posted }}</h5>
+                </div>
+            </div>
+            {% else %}
+                <p>No review found....</p>
+            {% endfor %}
+        </div>
+    </div>
+
+   
+</div>
+
+
+{% endblock %}

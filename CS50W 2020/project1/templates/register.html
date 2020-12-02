@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Register page
+{% endblock %}
+
+{% block body %}
+
+{% if mes %}
+<h1 class="card-title" style="color: black"><span style="font-size: 100%; ">{{ mes }}</span>
+</h1>
+{% else %}
+{% endif %}
+
+<div class="container mt-auto" style="height: auto;">
+        <form action="{{ url_for('newUser') }}" method="post">
+            <h1>Register</h1>
+            {{ form.hidden_tag() }}
+            <label for="email"><b>Username</b></label>
+            {{ form.username }}
+            <!-- <input type="text" placeholder="Enter your name" name="name" required> -->
+        
+            <label for="psw"><b>Password</b></label>
+            {{ form.password }}
+            <!-- <input type="password" placeholder="Enter Password" name="psw" required> -->
+            
+            <button class="btn btn-outline-primary">Register</button>
+        </form>
+</div>
+
+
+{% endblock %}

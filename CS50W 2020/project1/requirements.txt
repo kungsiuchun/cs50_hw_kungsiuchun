@@ -1,0 +1,9 @@
+Flask
+Flask-Session
+psycopg2-binary
+SQLAlchemy
+wtforms
+flask_wtf
+flask_login
+werkzeug
+

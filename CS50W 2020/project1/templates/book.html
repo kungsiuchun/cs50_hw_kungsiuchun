@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+Book page
+{% endblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+{% endwith %}
+
+{% block body %}
+
+<div class="row mt-auto" style="height: auto;">
+    
+    <div class="mt-auto d-flex bd-highlight">
+        <div class="col card p-2" style="width: auto;">
+            <h3 class="card-title">Book</h3>
+            <div class="align-self-stretch">
+                <img class="card__image" alt="Car" style="max-height: 30%" src="/static/book.png">
+            </div>
+            <h3 class="mt-3">ISBN: 0439598389</h3>
+            <h3>Title: A Bad Case of Stripes</h3>
+            <h3>Author: David Shannon</h3>
+            <h3>Year: 1998</h3>
+        </div>
+        <div class="mx-auto col">
+            <div class=" mx-auto card p-2 " style="width: auto;">
+                <h3>Goodreads Review Data</h3>
+                {% if review and rate %}
+                <h3>Review#: {{ review }} </h3>
+                <h3>Average rating: {{ rate }}</h3>
+                {% else %}
+                <h3>No data .....</h3>
+                {% endif %}
+
+            </div>
+
+            <div class="mt-auto p-2">
+                <h1>Write a Review!</h1>
+                <form action="/review/0439598389" method="POST">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                        <span class="input-group-text">Text</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea" name="review" required=""></textarea>
+                        <select name="star" required="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <span class="input-group-text">Star</span>
+                    </div>           
+                    <input class="btn btn-outline-primary" style="margin-bottom: auto" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="mt-4 p-2 mb-auto d-flex flex-column bd-highlight">
+        <h1>Review</h1>
+
+        <div class = "row mt-auto ">
+            {% for review in reviews %}
+            <div class = "col-md-auto mt-3">
+                <div class ="card" style="height: 250px; width: 250px;">
+                        <h3>{{ review.content }}</h5>
+                        {% for i in range(0, review.star) %}
+                            <span class="fa fa-star checked"></span>
+                        {% endfor %}
+                        <!-- <h3>{{ review.star }}</h5> -->
+                        <h3>{{ review.date_posted }}</h5>
+                </div>
+            </div>
+            {% else %}
+                <p>No review found....</p>
+            {% endfor %}
+        </div>
+        <div class = "row mt-auto ">
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+        
+           
+        <div class="p-2 mb-auto">
+            <h1>Review</h1>
+
+            <div class = "row mt-auto ">
+                {% for review in reviews %}
+                <div class = "col-md-auto mt-3">
+                    <div class ="card" style="height: 250px; width: 250px;">
+                            <h3>{{ review.content }}</h5>
+                            {% for i in range(0, review.star) %}
+                                <span class="fa fa-star checked"></span>
+                            {% endfor %}
+                            <!-- <h3>{{ review.star }}</h5> -->
+                            <h3>{{ review.date_posted }}</h5>
+                    </div>
+                </div>
+                {% else %}
+                    <p>No review found....</p>
+                {% endfor %}
+            </div>
+            <div class = "row mt-auto ">
+
+
+            </div>
+        </div>
